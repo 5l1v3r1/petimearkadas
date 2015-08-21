@@ -1,11 +1,11 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
-from .models import Post,Message
+from .models import Post
 
 from django.contrib.auth import login, logout
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 
-from pets.forms import MyUserCreationForm
+from pets.forms import MyUserCreationForm, AdvertCreationForm,PetCreationForm
 
 
 def index(request):
@@ -38,6 +38,30 @@ def register_user(request):
     return render(request, 'register.html', {"form": form})
 
 
+def add_pet(request):
+    form = PetCreationForm()
+
+    if request.method == "POST":
+        form = PetCreationForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect("/")
+    return render(request, 'addpet.html', {"form":form})
+
+
+def new_advert(request):
+    form = AdvertCreationForm()
+
+    if request.method == "POST":
+        form = AdvertCreationForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect("/")
+    return render(request, 'advert.html', {"form": form})
+
+
 def login_user(request):
     form = AuthenticationForm()
 
@@ -56,5 +80,4 @@ def logout_user(request):
     logout(request)
     return redirect('/')
 
-def new_advert(request):
-   return render(request,'advert.html',{"dummy":"helloworld"})
+

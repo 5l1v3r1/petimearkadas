@@ -68,16 +68,18 @@
 <body>
     <div class="site">
         <div class="header">
-			    <img src="img/logo.png" width="150px" height="150px">
+			    <img src="http://i.hizliresim.com/L4O2aV.png" width="150px" height="150px">
 		    	<p>petimearkadaş</p>
         </div>
         <div class="menu">
         <ul>
-			<li><a href="{% url "index" %}">Home</a></li>
                 {% if user.is_authenticated %}
                     <li>Merhaba {{ user }}</li>
+                    <li><a href="{% url "index" %}">Home</a></li>
+                    <li><a href="{% url "addpet" %}">Add Pet</a></li>
                     <li><a href="{% url "logout" %}">Logout</a></li>
                 {% else %}
+                    <li><a href="{% url "index" %}">Home</a></li>
                     <li><a href="{% url "register" %}">Register</a></li>
                     <li><a href="{% url "login" %}">Login</a></li>
                 {% endif %}
