@@ -5,6 +5,25 @@
     <title></title>
 </head>
 <body>
-    helloworld
+    {% for post in posts %}
+        <a href="{% url "post_detail" post.id %}">{{ post.title }}</a>
+        <br><br>
+        {{ post.text }}
+        <br><br>
+        <strong>Pet Info</strong>
+        <br>
+        yer:{{ post.location }}
+        <br>
+        adı:{{ post.pet.name }}
+        <br>
+        yaşı:{{ post.pet.age }}
+        <br>
+        gender:{{ post.pet.get_gender_display }}
+        <br>
+        türü:{{ post.pet.kind }}
+        <br>
+        <img src="{{post.pet.image}}" width="30%" height="30%">
+		<hr>
+	{% endfor %}
 </body>
 </html>

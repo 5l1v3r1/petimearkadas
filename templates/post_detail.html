@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {{ post.title }}
+    <br><br>
+    {{ post.text }}
+    <br><br>
+    {{ post.location }}
+    <br><br>
+    <strong>PET INFO</strong>
+    <br>
+    {{post.pet.name}}
+    <br>
+    {{post.pet.age}}
+    <br>
+    {{ post.pet.kind }}
+    <br>
+    {{ post.pet.get_gender_display }}
+    <br>
+    {% if post.pet.is_barren %}
+        bu heyvan kısır
+    {% endif %}
+    <br>
+    <img src="{{post.pet.image}}" width="30%" height="30%">
+    <br><br>
+    <strong>USER INFO</strong>
+    <br><br>
+    <a href="{% url "user_info" user.id%}">{{user.username}}</a>
+    <br><br>
+
+
+</body>
+</html>
