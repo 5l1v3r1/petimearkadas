@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
 
     {{ user.username }}
     <br><br><br>
@@ -22,5 +18,4 @@
 
     {% endif %}
 
-</body>
-</html>
+{% endblock %}

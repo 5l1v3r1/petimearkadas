@@ -50,3 +50,11 @@ def login_user(request):
             return redirect('/', authenticated_user)
 
     return render(request, 'login.html', {"form": form})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('/')
+
+def new_advert(request):
+   return render(request,'advert.html',{"dummy":"helloworld"})

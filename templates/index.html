@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
     {% for post in posts %}
         <a href="{% url "post_detail" post.id %}">{{ post.title }}</a>
         <br><br>
@@ -25,5 +20,5 @@
         <img src="{{post.pet.image}}" width="30%" height="30%">
 		<hr>
 	{% endfor %}
-</body>
-</html>
+    <a href="{% url "advert" %}"><div>Yeni İlan Ekle</div></a>
+{% endblock %}

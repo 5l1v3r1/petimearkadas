@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+
 class Pet(models.Model):
 
     GENDERS =[
@@ -19,6 +20,7 @@ class Pet(models.Model):
     def __str__(self):
         return self.name
 
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField()
@@ -30,12 +32,14 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
 class Message(models.Model):
     sender = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='sent_messages')
     recipient = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='received_messages')
     subject = models.CharField(max_length=50)
     body = models.TextField()
     is_read = models.BooleanField(default=False)
+
     def __str__(self):
         return self.subject
 

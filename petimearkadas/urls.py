@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from pets.views import index, post_detail, user_info,register_user,login_user
+from pets.views import index, post_detail, user_info, register_user, login_user, logout_user,new_advert
 
 urlpatterns = [
     url(r'^$',index,name='index'),
@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'^users/(?P<user_id>[0-9]+)/$', user_info, name='user_info'),
     url(r'^register$', register_user, name='register'),
     url(r'^login', login_user, name='login'),
+    url(r'^logout', logout_user, name='logout'),
+    url(r'^advert', new_advert, name='advert'),
 ]

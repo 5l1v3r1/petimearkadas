@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/index.css">
+    <style type="text/css">
+        clear{clear:both}
+
+        body{
+            background-color:#fee;
+        }
+
+        .site{
+            margin: 40px auto;
+            width:900px;
+        }
+
+        .site .header{
+            margin: 20px auto;
+            height: 200px;
+        }
+
+        .site .header img{
+            float: left;
+            margin-top: 30px;
+            margin-left: 30px;
+
+        }
+
+        .site .header p{
+            float: left;
+            font-family: "Alianza Slab";
+            color:#1e6e8e;
+            font-size: 100px;
+            margin-top: 50px;
+            padding-left: 30px;
+        }
+
+        .site .menu{
+            float:left;
+        }
+
+        .site .menu ul{
+            height: 30px;
+
+        }
+
+        .site .menu ul li{
+            text-decoration: none;
+            display: inline;
+            font-family: "Alianza Slab";
+            font-size:30px;
+            padding: 20px;
+            color:#c0304f;
+        }
+        .site .menu ul li a{
+            text-decoration: none;
+            color:#c0304f;
+        }
+        #container{
+            margin-top:200px;
+            margin-left: 60px;
+            width: 800px;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+    <div class="site">
+        <div class="header">
+			    <img src="img/logo.png" width="150px" height="150px">
+		    	<p>petimearkadaş</p>
+        </div>
+        <div class="menu">
+        <ul>
+			<li><a href="{% url "index" %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li>Merhaba {{ user }}</li>
+                    <li><a href="{% url "logout" %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url "register" %}">Register</a></li>
+                    <li><a href="{% url "login" %}">Login</a></li>
+                {% endif %}
+        </ul>
+		</div>
+        <div class="clear"></div>
+        <section id="container">
+        {% block content %}
+        {% endblock %}
+    </section>
+    </div>
+
+</body>
+</html>
